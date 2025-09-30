@@ -1,34 +1,53 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import './App.css';
 import {isPeriod} from "./scripts/Utils";
 import {useInterval} from "usehooks-ts";
+import type {DataObjects} from "./scripts/DataTypes";
 
 function App() {
-  const [count, setCount] = useState<number>(0);
+
   const [ runClock, setRunClock ] = useState<string | number>("");
+  const [clockColor, setClockColor ] = useState<DataObjects>({});
+
+  const handleChangeColor = useCallback((): void => {
+      const defaultValues: string[] = ["red", "green", "yellow"];
+      const defaultStyle: string[] = ["digitalClockColorRed",
+          "digitalClockColorGreen",
+          "digitalClockColorYellow"];
+      const random: number = Math.floor(Math.random() * defaultValues.length);
+      setClockColor({name: defaultValues[random], value: defaultStyle[random]});
+  }, []);
 
   useInterval((): void => {
       const createDate: Date = new Date();
       setRunClock(`${isPeriod(createDate.getHours())}:${isPeriod(createDate.getMinutes())}:${isPeriod(createDate.getSeconds())}`);
   }, 500);
+
   return (
-    <>
-      <div>
+      <>
+          <h1 className={"centerBg"}>Simple Digital Clock</h1>
 
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={(): void => setCount((count: number) : number => count + 1)}>
-          count is {count}
-        </button>
+          <div className={"card digitalBackground centerBg clockAlign"}>
+              <div
+                  className={`digitalClock ${clockColor ? `${clockColor.value}` : 'digitalClockColorDefault'}`}>
+                  {runClock}
+              </div>
 
-      </div>
+          </div>
 
-       <div className={"card"}>
-        The Time is: {runClock}
-       </div>
+          <hr/>
+          <span
+              className={"centerBg"}>Current color: {clockColor.name ?? "white"}</span>
+          <div className={"centerBg"}>
+              <button onClick={handleChangeColor}>Change
+                  Clock Color
+              </button>
 
-    </>
+          </div>
+          <div className={"centerBg"}>
+              <span><cite>*Button - uses a random selection, so the same color might be select consecutively.</cite></span>
+          </div>
+      </>
   )
 }
 

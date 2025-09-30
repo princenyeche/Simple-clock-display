@@ -40,3 +40,54 @@
 .read-the-docs {
   color: #888;
 }
+
+/* Custom CSS attributes */
+@font-face {
+  font-family: SimpleDigitClock;
+  src: url("./assets/fonts/alarm-clock.ttf");
+  font-weight: bold;
+}
+
+.digitalClock {
+  font-family: SimpleDigitClock, sans-serif;
+  font-size: 35px;
+}
+
+.digitalClockColorDefault {
+  color: white;
+  font-size: 35px;
+}
+.digitalClockColorGreen {
+  color: green;
+  font-size: 35px;
+}
+
+.digitalClockColorYellow {
+  color: yellow;
+  font-size: 35px;
+}
+
+.digitalClockColorRed {
+  color: red;
+  font-size: 35px;
+}
+
+.digitalBackground {
+  width: 150px;
+  height: auto;
+  padding: 5px;
+  margin: 2px;
+  background-color: #0B0B0B;
+}
+
+.centerBg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.clockAlign {
+  position: relative;
+  left: 25%;
+  right: 25%;
+}

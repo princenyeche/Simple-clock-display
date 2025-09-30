@@ -1,0 +1,1 @@
+export type DataObjects = { [key: string]: string};
