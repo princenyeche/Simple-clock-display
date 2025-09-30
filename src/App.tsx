@@ -45,7 +45,7 @@ function App() {
 
           </div>
           <div className={"centerBg"}>
-              <span><cite>*Button - uses a random selection, so the same color might be select consecutively.</cite></span>
+              <span><cite>*Button - uses a random selection, so the same color might be selected consecutively.</cite></span>
           </div>
       </>
   )
