@@ -88,7 +88,7 @@ function App(): JSX.Element {
             <Box>
                 <Stack space={"space.050"} alignBlock={"center"}>
                       <Text size={"small"} color={"inherit"}>
-                          Color: {clockColor.name ?? "white"} | Display: {clockSize} | Format: {!clockFormat ? `24-hour` : `12-hour`}</Text>
+                          Color: {clockColor.name ?? "white"} | Display: {clockSize} | Format: {!clockFormat ? `12-hour` : `24-hour`}</Text>
                       <Inline space={"space.025"} alignInline={"stretch"}>
                           <Stack xcss={"buttonSize"} alignInline={"center"} space={"space.025"}>
                           <Button onClick={handleChangeColor} appearance={"discovery"} spacing={"compact"}>Color
