@@ -13,3 +13,9 @@ to the web app to make it possible to render the time for other time zones.
 ## Step 2: Add CSS styling to the digital clock
 - Using a digital font to achieve a digital clock look and feel
 - Add a simple button to alter the color of the clock based on user click
+
+## Step 3: Use a Typed Framework to write JSX
+- Using Atlaskit to write the JSX part of the app, it should handle both CSS and HTML elements
+- Use another framework for the icons or any other typed version to help structure the app
+- Create a project structure to document the stages of the app development
+
