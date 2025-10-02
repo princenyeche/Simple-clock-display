@@ -1,13 +1,26 @@
-import { useState, useCallback } from 'react';
+import {useState, useCallback, type JSX} from 'react';
 import './App.css';
-import {isPeriod} from "./scripts/Utils";
+import {clockDisplay, isParseDate, parseFormat} from "./scripts/Utils";
 import {useInterval} from "usehooks-ts";
-import type {DataObjects} from "./scripts/DataTypes";
+import type {DataObjects } from "./scripts/DataTypes";
+import Heading from '@atlaskit/heading';
+import { Box, Inline, Stack, Text } from '@atlaskit/primitives/compiled';
+import Button from '@atlaskit/button/new';
+import ClockDisplay from './components/ClockDisplay';
 
-function App() {
+/**
+ * Creates an JSX rendering for different components within the app
+ * @constructor
+ * @return {JSX.Element}
+ */
+function App(): JSX.Element {
 
   const [ runClock, setRunClock ] = useState<string | number>("");
-  const [clockColor, setClockColor ] = useState<DataObjects>({});
+  const [ clockColor, setClockColor ] = useState<DataObjects>({});
+  const [ updateDate, setUpdateDate ] = useState<Date>(new Date());
+  const [ changeClock, setChangeClock ] = useState<boolean>(false);
+  const [ clockSize, setClockSize ] = useState<string>("default");
+  const [ clockFormat, setClockFormat ] = useState<boolean>(false);
 
   const handleChangeColor = useCallback((): void => {
       const defaultValues: string[] = ["red", "green", "yellow"];
@@ -20,34 +33,79 @@ function App() {
 
   useInterval((): void => {
       const createDate: Date = new Date();
-      setRunClock(`${isPeriod(createDate.getHours())}:${isPeriod(createDate.getMinutes())}:${isPeriod(createDate.getSeconds())}`);
+      setUpdateDate(createDate);
+      const isFormatCheck: string = (!clockFormat
+          ? parseFormat(createDate).join(":")
+          : parseFormat(createDate, "en-GB", true).join(":")
+      );
+      setRunClock(isFormatCheck);
   }, 500);
 
-  return (
-      <>
-          <h1 className={"centerBg"}>Simple Digital Clock</h1>
+  const boxStyle: DataObjects | object = clockDisplay("50px", "flex");
+  const runParsed: (string | number)[] = isParseDate(updateDate);
+  const handleClockDisplayOption = useCallback((): void => {
+       if (!changeClock) {
+           setChangeClock(true);
+           setClockSize("compact");
+       }
+       else {
+           setChangeClock(false);
+           setClockSize("expand");
+       }
+  }, [changeClock]);
 
-          <div className={"card digitalBackground centerBg clockAlign"}>
-              <div
-                  className={`digitalClock ${clockColor ? `${clockColor.value}` : 'digitalClockColorDefault'}`}>
+  const handleClockFormat = useCallback((): void => {
+      if (!clockFormat) {
+          setClockFormat(true);
+      }
+      else {
+          setClockFormat(false);
+      }
+  }, [clockFormat]);
+
+  const InitialClock: JSX.ElementType = (): JSX.Element => {
+      return (
+          <Box style={boxStyle}>
+              <Stack alignBlock="center" xcss={`digitalBackground digitalClock ${clockColor ? `${clockColor.value}` : 'digitalClockColorDefault'}`}>
                   {runClock}
-              </div>
+              </Stack>
 
-          </div>
+          </Box>
+      )
+  }
 
-          <hr/>
-          <span
-              className={"centerBg"}>Current color: {clockColor.name ?? "white"}</span>
-          <div className={"centerBg"}>
-              <button onClick={handleChangeColor}>Change
-                  Clock Color
-              </button>
+  return (
+      <Box testId="clock-display">
+          <Inline space="space.050" spread="space-between">
+              <Stack alignInline="center" space="space.100">
+                  <Heading size="medium" color={'color.text.inverse'}>Simple Digital Clock</Heading>
 
-          </div>
-          <div className={"centerBg"}>
-              <span><cite>*Button - uses a random selection, so the same color might be selected consecutively.</cite></span>
-          </div>
-      </>
+          {changeClock ?
+              <InitialClock /> :
+              <ClockDisplay dateLine={`${runParsed.join(" ")}`} timeLine={runClock} colorScheme={clockColor} />
+          }
+
+            <Box>
+                <Stack space={"space.050"} alignBlock={"center"}>
+                      <Text size={"small"} color={"inherit"}>
+                          Color: {clockColor.name ?? "white"} | Display: {clockSize} | Format: {!clockFormat ? `24-hour` : `12-hour`}</Text>
+                      <Inline space={"space.025"} alignInline={"stretch"}>
+                          <Stack xcss={"buttonSize"} alignInline={"center"} space={"space.025"}>
+                          <Button onClick={handleChangeColor} appearance={"discovery"} spacing={"compact"}>Color
+                          </Button>
+                          <Button onClick={handleClockDisplayOption} appearance={"warning"} spacing={"compact"}>Display
+                      </Button>
+                              <Button onClick={handleClockFormat} appearance={"danger"} spacing={"compact"}>Format
+                      </Button>
+                      </Stack>
+                      </Inline>
+                      <Text size={"small"} color={"inherit"}><cite>*Button - uses a random selection, so the same color might be selected consecutively.</cite></Text>
+                  </Stack>
+            </Box>
+
+              </Stack>
+              </Inline>
+      </Box>
   )
 }
 

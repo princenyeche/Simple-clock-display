@@ -73,12 +73,29 @@
 }
 
 .digitalBackground {
-  width: 150px;
-  height: auto;
+  width: 160px;
+  height: 50px;
   padding: 5px;
   margin: 2px;
   background-color: #0B0B0B;
 }
+
+.digitalBackground-AppleCorn {
+  width: 300px;
+  height: 100px;
+  padding: 3px;
+  margin: 2px;
+  background-color: #0B0B0B;
+}
+
+.displayClockDate {
+  font-size: 12px;
+}
+
+.displayMainClock {
+  font-size: 35px;
+}
+
 
 .centerBg{
     display: flex;
@@ -90,4 +107,13 @@
   position: relative;
   left: 25%;
   right: 25%;
+}
+
+.textColor {
+  color: white;
+}
+
+.buttonSize {
+  width: auto;
+  height: auto;
 }
