@@ -19,3 +19,8 @@ to the web app to make it possible to render the time for other time zones.
 - Use another framework for the icons or any other typed version to help structure the app
 - Create a project structure to document the stages of the app development
 
+## Step 4: Add test suites
+- Add test suites
+- Cypress test
+- Playwright test
+- Both can be used interchangeably 
