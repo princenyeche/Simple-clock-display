@@ -24,5 +24,9 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["src"]
+  "include": [
+    "src",
+    "node_modules/cypress/types/cypress-global-vars.d.ts",
+    "node_modules/cypress/types/mocha/index.d.ts"
+  ]
 }
