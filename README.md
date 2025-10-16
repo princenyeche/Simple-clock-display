@@ -24,3 +24,9 @@ to the web app to make it possible to render the time for other time zones.
 - Cypress test
 - Playwright test
 - Both can be used interchangeably 
+
+### Step 4.1: clockFace design
+- Added a few CSS to handle the change in clockFace
+- Added new fonts for the different clockFaces
+- Included the logic for changing clockFace
+- Added a context as `ClockProvider` for handling the change in clockFace rather than using localStorage

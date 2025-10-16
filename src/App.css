@@ -43,15 +43,62 @@
 
 /* Custom CSS attributes */
 @font-face {
-  font-family: SimpleDigitClock;
+  font-family: SimpleBgAlarm;
   src: url("./assets/fonts/alarm-clock.ttf");
   font-weight: bold;
 }
 
-.digitalClock {
-  font-family: SimpleDigitClock, sans-serif;
+@font-face {
+  font-family: SimpleBgClock;
+  src: url("./assets/fonts/bg-clock.ttf");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: SimpleBgLoopy;
+  src: url("./assets/fonts/bg-loopy.ttf");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: SimpleBgRadio;
+  src: url("./assets/fonts/bg-radio.TTF");
+  font-weight: bold;
+}
+
+
+@font-face {
+  font-family: SimpleBgTicking;
+  src: url("./assets/fonts/bg-ticking.ttf");
+  font-weight: bold;
+}
+
+
+.digitalClockAlarm {
+  font-family: SimpleBgAlarm, sans-serif;
   font-size: 35px;
 }
+
+.digitalClocking {
+  font-family: SimpleBgClock, sans-serif;
+  font-size: 35px;
+}
+
+.digitalClockLoopy {
+  font-family: SimpleBgLoopy, sans-serif;
+  font-size: 35px;
+}
+
+.digitalClockRadio {
+  font-family: SimpleBgRadio, sans-serif;
+  font-size: 35px;
+}
+
+.digitalClockTicking {
+  font-family: SimpleBgTicking, sans-serif;
+  font-size: 35px;
+}
+
 
 .digitalClockColorDefault {
   color: white;
