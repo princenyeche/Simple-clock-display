@@ -30,3 +30,9 @@ to the web app to make it possible to render the time for other time zones.
 - Added new fonts for the different clockFaces
 - Included the logic for changing clockFace
 - Added a context as `ClockProvider` for handling the change in clockFace rather than using localStorage
+
+## Step 4.2: Added more components and architectural design
+- Added more components
+- Created the app context and providers
+- Added a new interface to remove "any" keyword
+- Checked the app linting command
