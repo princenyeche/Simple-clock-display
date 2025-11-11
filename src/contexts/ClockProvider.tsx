@@ -1,6 +1,7 @@
 import {createContext, type JSX,
     useContext, useState, useCallback} from 'react';
-import type {DataObjects, ClockContextType} from "../scripts/DataTypes.ts";
+import type {DataObjects, ClockContextType} from "../scripts/DataTypes";
+import type { ReactNode } from 'react'
 
 const ClockContext  = createContext<ClockContextType | undefined>(undefined);
 
@@ -10,7 +11,7 @@ const ClockContext  = createContext<ClockContextType | undefined>(undefined);
  * @constructor
  * @return {JSX.Element}
  */
-function ClockProvider({ children }: {children: any}): JSX.Element {
+function ClockProvider({ children }: {children: ReactNode}): JSX.Element {
 
     const [ getClockFace, setClockFace ] = useState<string | DataObjects>({});
 
@@ -25,7 +26,6 @@ function ClockProvider({ children }: {children: any}): JSX.Element {
     );
 }
 
-export default ClockProvider;
 export function useClock(): ClockContextType {
     const context = useContext(ClockContext);
     if (context === undefined) {
@@ -34,3 +34,4 @@ export function useClock(): ClockContextType {
     return context;
 
 }
+export default ClockProvider;

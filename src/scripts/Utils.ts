@@ -80,3 +80,46 @@ export const parseFormat = (
            isPeriod(Number(minute)),
            isPeriod(Number(second))];
     }
+
+
+/**
+ * Provides the ability to switch between 12-hour or 24-hour clock
+ * date format
+ * @param {string | DataObjects} clockFaceValue - An object value for clockFace
+ * @param {DataObjects | null} clockColorValue - An object value for ColorClass
+ * @return {string}
+ */
+export const buildClockDisplayClassName = (
+    clockFaceValue: string | DataObjects | undefined,
+    clockColorValue: DataObjects | null
+): string => {
+    const faceClass = typeof clockFaceValue === 'object'
+        ? clockFaceValue.value
+        : "digitalClockAlarm";
+
+    const colorClass = clockColorValue?.value ?? "digitalClockColorDefault";
+
+    return `digitalBackground ${faceClass} ${colorClass}`;
+};
+
+
+/**
+ * Provides the ability to switch between 12-hour or 24-hour clock
+ * date format
+ * @param {string | DataObjects} clockFaceValueOrLabel - An object value for clockFace
+ * @param {boolean} getType - A boolean condition to switch parameter of clockFace
+ * @return {DataObjects | string}
+ */
+export const buildFaceCondition = (
+    clockFaceValueOrLabel: string | DataObjects | undefined,
+    getType: boolean
+): DataObjects | string => {
+    const faceClass = typeof clockFaceValueOrLabel === "object"
+          ? clockFaceValueOrLabel.value
+          : "digitalClockAlarm";
+    const faceLabel = typeof clockFaceValueOrLabel === "object"
+          ? clockFaceValueOrLabel?.label
+          : "Alarm face";
+
+    return getType ? faceClass : faceLabel;
+}

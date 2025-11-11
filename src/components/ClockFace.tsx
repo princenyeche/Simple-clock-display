@@ -5,7 +5,7 @@ import Form,  {
     Field
 } from '@atlaskit/form';
 import Select, { type OptionsType } from '@atlaskit/select';
-import type {DataObjects} from "../scripts/DataTypes";
+import type {DataObjects, ClockContextType} from "../scripts/DataTypes";
 import {useClock} from "../contexts/ClockProvider";
 
 
@@ -28,7 +28,7 @@ const defaultOptions: OptionsType  = [
  */
 function ClockFace(): JSX.Element {
     const [ clockFaceSelect, ] = useState<DataObjects | string>(defaultOptions[0]);
-    const { getClockFace, onSetClockFace }: any = useClock();
+    const { onSetClockFace }: ClockContextType = useClock();
 
 
     const handleClockFaceType = useCallback((value?: string | DataObjects) : string | void => {
@@ -36,9 +36,9 @@ function ClockFace(): JSX.Element {
         return 'REQUIRED';
     }
     onSetClockFace(value);
-  }, [getClockFace]);
+  }, [onSetClockFace]);
 
-    const handleSubmit = (formState : any): void => {
+    const handleSubmit = (formState : unknown): void => {
        console.log('form state', formState);
     };
     return (
