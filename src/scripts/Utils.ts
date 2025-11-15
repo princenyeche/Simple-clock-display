@@ -1,4 +1,4 @@
-import type {DataObjects, ListObjects} from "./DataTypes";
+import type {DataObjects, ListObjects, ScreenDimension} from "./DataTypes";
 
 /**
  * Return a zero-based value indicating the period of time that has passed.
@@ -83,8 +83,7 @@ export const parseFormat = (
 
 
 /**
- * Provides the ability to switch between 12-hour or 24-hour clock
- * date format
+ * Provides the ability to change the clock face class
  * @param {string | DataObjects} clockFaceValue - An object value for clockFace
  * @param {DataObjects | null} clockColorValue - An object value for ColorClass
  * @return {string}
@@ -104,8 +103,7 @@ export const buildClockDisplayClassName = (
 
 
 /**
- * Provides the ability to switch between 12-hour or 24-hour clock
- * date format
+ * Provides the ability change the clock face class for the different clock faces
  * @param {string | DataObjects} clockFaceValueOrLabel - An object value for clockFace
  * @param {boolean} getType - A boolean condition to switch parameter of clockFace
  * @return {DataObjects | string}
@@ -122,4 +120,14 @@ export const buildFaceCondition = (
           : "Alarm face";
 
     return getType ? faceClass : faceLabel;
+}
+
+/**
+ * Provides the ability to get the screen dimensions
+ * @return {object}
+ */
+export const getScreenDimension: () => ScreenDimension = (): ScreenDimension => {
+    const screenWidth: number = window.innerWidth;
+    const screenHeight: number = window.innerHeight;
+    return {width: screenWidth, height: screenHeight}
 }

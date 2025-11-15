@@ -1,6 +1,6 @@
 import type {JSX} from "react";
 import '../App.css';
-import {Box, Inline, Stack} from "@atlaskit/primitives/compiled";
+import {Box, Inline, Stack } from "@atlaskit/primitives/compiled";
 import type {DataObjects} from "../scripts/DataTypes";
 
 /**
@@ -19,6 +19,7 @@ function ClockDisplay(
         colorScheme: DataObjects,
         face: DataObjects}
 ): JSX.Element {
+
       return (
           <Box testId={"clockType-face-display"}>
               <Inline space={"space.050"} spread={"space-between"}>

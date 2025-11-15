@@ -1,9 +1,9 @@
 import {createContext, type JSX,
     useContext, useState, useCallback} from 'react';
-import type {DataObjects, ClockContextType} from "../scripts/DataTypes";
-import type { ReactNode } from 'react'
+import type {DataObjects, ClockContextType} from '../scripts/DataTypes';
+import type { ReactNode, Context } from 'react';
 
-const ClockContext  = createContext<ClockContextType | undefined>(undefined);
+const ClockContext: Context<ClockContextType | undefined>  = createContext<ClockContextType | undefined>(undefined);
 
 /**
  * Creates a context for the app

@@ -1,16 +1,16 @@
-import Heading from "@atlaskit/heading";
-import AppLayout from "../components/AppLayout";
+import Heading from '@atlaskit/heading';
+import AppLayout from '../components/AppLayout';
 import {useState, useCallback, type JSX} from 'react';
-import '../App.css';
-import {clockDisplay, isParseDate, parseFormat} from "../scripts/Utils";
+import {clockDisplay, isParseDate, parseFormat} from '../scripts/Utils';
 import {useInterval} from "usehooks-ts";
-import type {DataObjects, ClockContentProps, ClockContextType} from "../scripts/DataTypes";
-import {buildClockDisplayClassName, buildFaceCondition}  from "../scripts/Utils";
+import type {DataObjects, ClockContentProps, ClockContextType} from '../scripts/DataTypes';
+import {buildClockDisplayClassName, buildFaceCondition}  from '../scripts/Utils';
 import { Box, Inline, Stack, Text } from '@atlaskit/primitives/compiled';
 import Button from '@atlaskit/button/new';
 import ClockDisplay from '../components/ClockDisplay';
-import ClockFace from "../components/ClockFace";
-import {useClock} from "../contexts/ClockProvider";
+import ClockFace from '../components/ClockFace';
+import {useClock} from '../contexts/ClockProvider';
+import {ColorModeSwitcher } from '../contexts/ThemeProvider';
 
 
 function Dashboard(): JSX.Element {
@@ -93,10 +93,10 @@ function Dashboard(): JSX.Element {
       )
   }
     return (
-     <AppLayout>
+     <AppLayout pageName={"Dashboard"}>
            <Inline space="space.050" spread="space-between">
               <Stack alignInline="center" space="space.100">
-                  <Heading size="medium" color={'color.text.inverse'}>Simple Digital Clock</Heading>
+                  <Heading size="medium" color={'color.text'}>Simple Digital Clock</Heading>
 
           <ClockContent
               changeClock={changeClock}
@@ -172,7 +172,7 @@ function ClockContent({
 
             <Box>
                 <Stack space={"space.050"} alignBlock={"center"}>
-                      <Text size={"small"} color={"inherit"}>
+                      <Text size={"small"} color={"color.text"}>
                           Color: {clockColor.name ?? "white"} | Display: {clockSize} | Format: {!clockFormat ? `12-hour` : `24-hour`} | Face: {faceConditionFalse as string} </Text>
                       <Inline space={"space.025"} alignInline={"center"}>
                           <Button onClick={handleChangeColor} appearance={"discovery"} spacing={"compact"}>Color
@@ -188,8 +188,9 @@ function ClockContent({
                                   </Inline>
 
                       </Inline>
-                      <Text size={"small"} color={"inherit"}><cite>*Button - uses a random selection, so the same color might be selected consecutively.</cite></Text>
-                  </Stack>
+                      <Text size={"small"} color={'color.text'}><cite>*Button - uses a random selection, so the same color might be selected consecutively.</cite></Text>
+                    <ColorModeSwitcher />
+                </Stack>
             </Box>
         </>
     )

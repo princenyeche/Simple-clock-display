@@ -36,3 +36,8 @@ to the web app to make it possible to render the time for other time zones.
 - Created the app context and providers
 - Added a new interface to remove "any" keyword
 - Checked the app linting command
+
+### Step 4.3: Added app context for typed datatypes
+- Added more app context
+- Added context for the auth user for the backend connection
+- Added UI layout
