@@ -1,15 +1,15 @@
 import type { JSX, ReactElement } from "react";
 import Banner from "@atlaskit/banner";
 import type {BannerValues} from "../scripts/DataTypes";
-import { Box } from '@atlaskit/primitives/compiled';
+import { Box } from '@atlaskit/primitives';
 
 
-function AppBanner({appearance, message, icon = <></> }:
+function AppBanner({appearance, message, icon}:
                    {appearance: BannerValues, icon: ReactElement, message: string }):
     JSX.Element {
 
   const bannerContentStyles = {
-    width: '100%',
+    width: 'auto',
     height: '45px',
     display: 'inline-block',
 };

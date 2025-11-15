@@ -2,7 +2,7 @@ import {type JSX} from "react";
 import {
     Header
 } from '@atlaskit/side-navigation';
-import AiAgentIcon from '@atlaskit/icon/core/ai-agent';
+import { BsClockFill } from "react-icons/bs";
 import {Box} from '@atlaskit/primitives';
 
 
@@ -15,7 +15,7 @@ function AppSideHeader(): JSX.Element {
                        </a>
                    </>
                )}
-               iconBefore={<AiAgentIcon label={"Simple Clock"}/>}
+               iconBefore={<BsClockFill />}
              description={"A dashboard for clocks"}
                >
                  Simple Digital Clock

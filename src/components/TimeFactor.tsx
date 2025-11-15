@@ -1,4 +1,5 @@
 import { useState, useEffect, type JSX } from 'react';
+import type {Any} from '../scripts/DataTypes';
 
 const secondsTable: (string | number)[][] = [
   ['year', 60 * 60 * 24 * 365],
@@ -36,7 +37,7 @@ function TimeFactor({ isoDate }: {isoDate: string}): JSX.Element {
   const [, setUpdate] = useState<number>(0);
 
   useEffect((): () => void => {
-    const timerId: number = setInterval(
+    const timerId: number | Any = setInterval(
       (): void => setUpdate(update => update + 1),
       interval as number * 1000
     );

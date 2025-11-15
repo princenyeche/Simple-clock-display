@@ -1,5 +1,5 @@
 import {type JSX} from "react";
-import AiChatIcon from "@atlaskit/icon/core/ai-chat";
+import { RiMessage2Line } from "react-icons/ri";
 import Link from "@atlaskit/link";
 import {Footer} from "@atlaskit/side-navigation";
 
@@ -7,7 +7,7 @@ import {Footer} from "@atlaskit/side-navigation";
 function AppSideFooter(): JSX.Element {
     return (
         <Footer
-               iconBefore={<AiChatIcon label={"Simple Clock display"} />}
+               iconBefore={<RiMessage2Line />}
                description={
                    <div>
                     <Link href={"https://github.com/princenyeche/simple-clock-display"} target={"_blank"}>

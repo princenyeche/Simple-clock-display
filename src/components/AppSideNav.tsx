@@ -19,7 +19,7 @@ function AppSideNav():JSX.Element {
     // }, [expandCollapse]);
 
     const appSideNavStyles = {
-    height: '700px',
+    height: '100%',
    }
 
     return (
